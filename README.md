@@ -8,7 +8,7 @@ make install
 
 To just build the binary:
 ```
-go build rss-influxdb.go
+make build
 ```
 
 To run:
