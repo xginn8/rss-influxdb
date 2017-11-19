@@ -1,8 +1,15 @@
 [Unit]
 Description=Stash RSS/Atom feed data into InfluxDB for visualization in Grafana
+After=network.target
+Requires=network.target
 
 [Service]
+RestartSec=60
+Restart=on-failure
 ExecStart=/usr/local/bin/rss-influxdb \
     -feed https://status.cloud.google.com/feed.atom \
     -feed http://status.aws.amazon.com/rss/cloudfront.rss \
     -time 10000
+
+[Install]
+WantedBy=multi-user.target
