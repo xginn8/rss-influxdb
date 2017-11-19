@@ -1,12 +1,19 @@
 # rss-influxdb
 Dump RSS Feed events to InfluxDB for visualization in Grafana
 
-To build:
+To install:
+```
+make install
+```
 
+To just build the binary:
 ```
 go build rss-influxdb.go
 ```
 
 To run:
+```
+systemctl start rss-influxdb.service
+```
 
-Simply install the systemd unit to /etc/systemd/system, and start the unit if using systemd.
+Change the default RSS feeds to follow by editing the .service file. Any RSS or Atom feed should work.
