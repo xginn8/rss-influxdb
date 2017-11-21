@@ -208,12 +208,13 @@ func writeEventToInflux(
 		"text":  event.Text,
 		"title": event.Title,
 		"url":   event.Url,
+		"feed":  event.Measurement,
 		"id":    event.ID,
 	}
 	fields := map[string]interface{}{
 		"timestamp": event.Time.Unix(),
 	}
-	pt, err := client.NewPoint(event.Measurement, tags, fields, event.Time.Time)
+	pt, err := client.NewPoint("feeds", tags, fields, event.Time.Time)
 	check(err)
 	bp.AddPoint(pt)
 	// Write the batch
